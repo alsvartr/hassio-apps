@@ -1,0 +1,8 @@
+#!/usr/bin/with-contenv bashio
+# shellcheck shell=bash
+# ==============================================================================
+# Start the ntfy server
+# ==============================================================================
+
+bashio::log.info "Starting ntfy server..."
+exec ntfy serve --config /etc/ntfy/server.yml

@@ -1,0 +1,54 @@
+name: "ntfy"
+description: "Send push notifications to your phone or desktop using PUT/POST"
+version: "2.28.0-1"
+slug: "ntfy"
+init: false
+arch:
+  - aarch64
+  - amd64
+icon: true
+url: "https://github.com/alsvartr/hassio-apps/tree/master/ntfy"
+panel_icon: "mdi:bell-ring"
+startup: services
+ingress: true
+ingress_port: 2586
+ports:
+  2586/tcp: 2586
+  443/tcp: null
+ports_description:
+  2586/tcp: "ntfy HTTP API"
+  443/tcp: "ntfy HTTPS API (optional, requires ssl: true and certificates from the HA Let's Encrypt add-on)"
+map:
+  - config:rw
+  - share:rw
+  - ssl:ro
+options:
+  base_url: ""
+  domain: ""
+  enable_login: true
+  require_login: true
+  enable_signup: false
+  unifiedpush: true
+  ssl: false
+  certfile: "ntfy.pem"
+  keyfile: "ntfy.key"
+  auth_default_access: "deny-all"
+  acl: []
+  upstream_base_url: "https://ntfy.sh"
+  log_level: "info"
+schema:
+  base_url: "str?"
+  domain: "str?"
+  enable_login: bool
+  require_login: bool
+  enable_signup: bool
+  unifiedpush: bool
+  enable_reservations: bool
+  ssl: bool
+  certfile: str
+  keyfile: str
+  auth_default_access: "list(read-write|read-only|write-only|deny-all)"
+  acl:
+    - str
+  upstream_base_url: "str?"
+  log_level: "list(trace|debug|info|warn|error)"

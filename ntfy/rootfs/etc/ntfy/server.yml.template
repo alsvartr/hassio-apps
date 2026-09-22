@@ -1,0 +1,15 @@
+# ntfy server configuration template
+# This file is used as a fallback if the init script cannot generate a config.
+# Normally, /etc/ntfy/server.yml is generated dynamically from add-on options.
+
+listen-http: ":2586"
+behind-proxy: true
+cache-file: "/data/ntfy/cache.db"
+cache-duration: "12h"
+auth-file: "/data/ntfy/user.db"
+auth-default-access: "read-write"
+attachment-cache-dir: "/data/ntfy/attachments"
+upstream-base-url: "https://ntfy.sh"
+log-level: "info"
+log-format: "text"
+keepalive-interval: "45s"
